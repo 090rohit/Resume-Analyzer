@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analysis Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Light Theme (Default) */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --card-bg: #f9f9f9;
+            --border-color: #dddddd;
+            --input-bg: #ffffff;
+            --input-text: #333333;
+        }
+
+        /* Dark Theme */
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --card-bg: #2d2d2d;
+            --border-color: #444444;
+            --input-bg: #333333;
+            --input-text: #ffffff;
+        }
+
+        /* Apply Variables */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        textarea {
+            background-color: var(--input-bg);
+            color: var(--input-text);
+            border: 1px solid var(--border-color);
+        }
+
+        .button {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--input-bg);
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Resume Analysis Tool</h1>
+            <p class="subtitle">Unlock your career potential</p>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+                <span class="toggle-text">Dark Mode</span>
+            </button>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <form class="input-form" id="input-form" enctype="multipart/form-data">
+                    <div class="input-options">
+                        <div class="pdf-input-area">
+                            <h3>Upload Resume PDF</h3>
+                            <div class="file-upload">
+                                <input type="file" id="pdf-input" name="file" accept=".pdf">
+                            </div>
+                        </div>
+    
+                        <div class="text-input-area">
+                            <h3>Enter Job Description</h3>
+                            <textarea id="text-input" placeholder="Paste job description here..."></textarea>
+                        </div>
+                    </div>
+    
+                    <button class="button analyze-button" type="submit">
+                        <i class="fas fa-search"></i> Analyze
+                    </button>
+                </form>
+            </section>
+
+            <section class="result-section" id="result-section">
+                <h2>Analysis Result</h2>
+                <div class="score-container">
+                    <div class="score-label">Match Score:</div>
+                    <div class="score" id="score">0</div>
+                    <div class="score-percent">%</div>
+                </div>
+                <div class="score-bar-container">
+                    <div class="score-bar" id="score-bar"></div>
+                </div>
+                <div class="interpretation" id="interpretation"></div>
+            </section>
+
+            <div class="loader" id="loader"></div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Resume Analysis Tool</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const toggleIcon = themeToggle.querySelector('i');
+            const toggleText = themeToggle.querySelector('.toggle-text');
+
+            // Check for saved theme preference or use system preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                toggleIcon.classList.replace('fa-moon', 'fa-sun');
+                toggleText.textContent = 'Light Mode';
+            }
+
+            // Add event listener for theme toggle
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+
+                // Update button icon and text
+                if (newTheme === 'dark') {
+                    toggleIcon.classList.replace('fa-moon', 'fa-sun');
+                    toggleText.textContent = 'Light Mode';
+                } else {
+                    toggleIcon.classList.replace('fa-sun', 'fa-moon');
+                    toggleText.textContent = 'Dark Mode';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+}
+
+header {
+    background-color: #0056b3;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+header .subtitle {
+    font-size: 1.2rem;
+    color: #d0e2ff;
+}
+
+main {
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+/* Tabs Styling */
+.tabs {
+    display: flex;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.tab {
+    padding: 1rem 1.5rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #555;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 8px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.tab.active {
+    background-color: #007bff;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+}
+
+.tab:hover {
+    background-color: #e0e0e0;
+}
+
+.tab.active:hover {
+    background-color: #0056b3;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* File Upload Styling */
+.file-upload {
+    margin-bottom: 1.5rem;
+}
+
+.file-upload-button {
+    padding: 0.75rem 1.25rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.file-upload-button:hover {
+    background-color: #0056b3;
+}
+
+#file-name {
+    margin-left: 1rem;
+    font-style: italic;
+    color: #777;
+}
+
+/* Button Styling */
+.button {
+    padding: 0.75rem 1.5rem;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.button:hover {
+    background-color: #1e7e34;
+}
+
+.analyze-button {
+    background-color: #007bff;
+}
+
+.analyze-button:hover {
+    background-color: #0056b3;
+}
+
+/* Text Area Styling */
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    resize: vertical;
+}
+
+/* Result Section Styling */
+.result-section {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.score-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.score-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+.score {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.score-percent {
+    font-size: 1.2rem;
+    color: #28a745;
+}
+
+.score-bar-container {
+    background-color: #ddd;
+    border-radius: 6px;
+    height: 12px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.score-bar {
+    background-color: #28a745;
+    height: 100%;
+    width: 0; /* Set dynamically with JavaScript */
+    border-radius: 6px;
+    transition: width 0.5s ease-in-out;
+}
+
+.interpretation {
+    font-style: italic;
+    color: #555;
+}
+
+/* Loader Styling */
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 2rem auto;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    color: #777;
+    font-size: 0.9rem;
+}
