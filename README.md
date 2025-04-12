@@ -143,9 +143,3 @@ Contributions are welcome! Please follow these steps:
 ## **License**
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
----
-
-## **Contact**
-For any questions or feedback, feel free to reach out:
-- **GitHub**: [090rohit](https://github.com/090rohit)
-- **Email**: [your-email@example.com]
